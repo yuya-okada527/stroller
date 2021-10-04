@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="button">クリック</button>
+    <script>
+      function success(pos) {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        alert(`緯度=${lat}, 経度=${lng}`);
+      }
+
+      function fail(pos) {
+        alert(
+          "位置情報の取得に失敗しました。エラーコード：" + JSON.stringify(pos)
+        );
+      }
+
+      document.getElementById("button").addEventListener(
+        "click",
+        () => {
+          navigator.geolocation.getCurrentPosition(success, fail);
+        },
+        false
+      );
+    </script>
+  </body>
+</html>
